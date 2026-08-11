@@ -9,6 +9,6 @@ COPY . .
 
 ENV PYTHONPATH=/app/src
 
-EXPOSE 8080
+EXPOSE 10000
 
-CMD ["sh", "-c", "echo 'Starting Prompts Hub Insurance Claims API...' && python -m prompts_hub.claims --host 0.0.0.0 --port ${PORT}"]
+CMD ["python", "-m", "prompts_hub.claims", "--host", "0.0.0.0", "--port", "10000"]
