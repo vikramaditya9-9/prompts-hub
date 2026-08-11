@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prepare an insurance claim">
+  <title>Claimdesk | Insurance claim</title>
+  <link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Claimdesk <span>Insurance workspace</span></a>
+    <div class="mock-badge">Local demo</div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">New claim</p>
+      <h1>Turn the facts into a clear claim.</h1>
+      <p class="lede">Capture the incident, list the loss, and review everything before it is submitted.</p>
+    </section>
+
+    <div class="progress" aria-label="Claim progress">
+      <div class="step active" data-step-indicator="1"><span>01</span>Claim details</div>
+      <div class="line"></div>
+      <div class="step" data-step-indicator="2"><span>02</span>Review & submit</div>
+    </div>
+
+    <form id="claim-form" novalidate>
+      <section class="panel" data-step="1">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Step 1</p><h2>Tell us what happened</h2></div>
+          <span class="required-note">* Required</span>
+        </div>
+        <div id="form-error" class="alert error" role="alert" hidden></div>
+
+        <fieldset>
+          <legend>Policy information</legend>
+          <div class="field-grid">
+            <label>Insurance type *<select id="insurance_type" required><option value="">Choose a type</option></select></label>
+            <label>Insurer *<input id="insurer" required placeholder="Example Mutual"></label>
+            <label>Policy number *<input id="policy_number" required placeholder="Your policy number"></label>
+            <label>Claim reference <input id="claim_reference" placeholder="If already provided"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Incident</legend>
+          <div class="field-grid">
+            <label>Incident date *<input id="incident_date" type="date" required></label>
+            <label>Location<input id="location" placeholder="City, state or address"></label>
+          </div>
+          <label>Description *<textarea id="description" required rows="5" placeholder="Describe only what you know happened."></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <div class="fieldset-heading"><legend>Losses and expenses</legend><button type="button" class="text-button" id="add-loss">+ Add expense</button></div>
+          <div id="losses" class="repeat-list"></div>
+          <p class="hint">Use one row for each repair, replacement, fee, or other expense.</p>
+        </fieldset>
+
+        <fieldset>
+          <div class="fieldset-heading"><legend>Supporting documents</legend><button type="button" class="text-button" id="add-document">+ Add document</button></div>
+          <div id="documents" class="repeat-list"></div>
+          <p class="hint">This records evidence names only. Upload handling can be connected to your storage service.</p>
+        </fieldset>
+
+        <div class="actions"><span class="save-note" id="save-note">Your draft stays in this browser until you save it.</span><button type="submit" class="button primary">Review claim <span>→</span></button></div>
+      </section>
+
+      <section class="panel review" data-step="2" hidden>
+        <div class="panel-heading"><div><p class="eyebrow">Step 2</p><h2>Review before submission</h2></div><span class="review-status">Draft</span></div>
+        <div class="verification"><strong>Verify every fact.</strong> This demo does not send anything to an insurer. Check dates, amounts, policy details, and evidence before submitting.</div>
+        <div id="review-content" class="review-content"></div>
+        <div id="submit-error" class="alert error" role="alert" hidden></div>
+        <div class="actions"><button type="button" class="button secondary" id="back-button">← Edit claim</button><button type="button" class="button primary" id="submit-button">Save & submit claim <span>→</span></button></div>
+      </section>
+    </form>
+  </main>
+  <footer>Claimdesk demo <span>•</span> Facts first. Clarity always.</footer>
+  <script src="/ui/app.js"></script>
+</body>
+</html>

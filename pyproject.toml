@@ -10,6 +10,7 @@ requires-python = ">=3.10"
 
 [project.scripts]
 prompts-hub-health = "prompts_hub.health:main"
+prompts-hub-claims = "prompts_hub.claims:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
