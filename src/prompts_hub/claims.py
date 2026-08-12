@@ -239,3 +239,6 @@ def main() -> None:
     with make_server(args.host, args.port, create_app()) as server:
         print(f"Insurance claim API listening on http://{args.host}:{args.port}")
         server.serve_forever()
+
+if __name__ == "__main__":
+    main()
