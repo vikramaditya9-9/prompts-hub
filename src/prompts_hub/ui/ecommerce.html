@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Velora Market</title>
+    <link rel="stylesheet" href="/ui/ecommerce.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">V</div>
+        <div>
+          <div class="brand">Velora Market</div>
+          <div class="brand-subtitle">E-commerce demo</div>
+        </div>
+      </div>
+      <div class="cart-pill">Cart <span id="cart-count">0</span></div>
+    </header>
+
+    <main class="page-shell">
+      <section class="catalog panel">
+        <div class="section-header">
+          <h1>Featured products</h1>
+          <span id="product-status" class="status-badge">Loading catalog...</span>
+        </div>
+        <div id="product-list" class="product-list"></div>
+      </section>
+
+      <aside class="checkout panel">
+        <h2>Checkout</h2>
+        <form id="checkout-form" novalidate>
+          <label>
+            Customer ID
+            <input id="customer_id" name="customer_id" placeholder="cust-001" required>
+          </label>
+          <label>
+            Email
+            <input id="email" name="email" type="email" placeholder="customer@example.com" required>
+          </label>
+
+          <div class="cart-summary">
+            <h3>Cart</h3>
+            <div id="cart-items" class="cart-items empty">No items selected.</div>
+            <div class="totals">
+              <span>Subtotal</span>
+              <strong id="subtotal">$0.00</strong>
+            </div>
+          </div>
+
+          <div id="checkout-error" class="alert error" hidden></div>
+          <div id="checkout-success" class="alert success" hidden></div>
+          <button type="submit" class="primary">Process order</button>
+        </form>
+      </aside>
+    </main>
+
+    <script src="/ui/ecommerce.js"></script>
+  </body>
+</html>

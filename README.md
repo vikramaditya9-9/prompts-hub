@@ -15,6 +15,19 @@ This repository also includes a small leave-management example built using the e
 
 This module intentionally avoids a database and leaves leave-balance enforcement out of scope for the MVP.
 
+## E-commerce storefront demo
+
+This repository also includes a storefront example that implements the requested product listing and checkout flow in the same lightweight WSGI + in-memory style used elsewhere in the repo.
+
+- product catalog listing from an in-memory product repository
+- multi-item cart checkout in a single request
+- inventory reduction at order time
+- customer profile tracking for purchased products and order IDs
+- success email alert metadata attached to the confirmed order
+- static HTML, CSS, and JavaScript assets served from the UI folder
+
+The flow is intentionally simple and deterministic for local development. It is suitable as a demo backend and UI pattern rather than a production-ready Java/Spring + React + FastAPI + H2 stack.
+
 ✨ Features
 🔍 Discover Prompts — Browse prompts across multiple categories and use cases.
 🗂️ Categories & Tags — Organize prompts for easy navigation and filtering.

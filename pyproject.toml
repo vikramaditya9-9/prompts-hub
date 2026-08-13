@@ -12,6 +12,7 @@ requires-python = ">=3.10"
 prompts-hub-health = "prompts_hub.health:main"
 prompts-hub-claims = "prompts_hub.claims:main"
 prompts-hub-leave = "prompts_hub.leave:main"
+prompts-hub-ecommerce = "prompts_hub.ecommerce:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
