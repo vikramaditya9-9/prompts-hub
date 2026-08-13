@@ -1,55 +1,61 @@
 ---
 mode: agent
-description: "Define and execute a reusable testing strategy"
+description: "Create and run the repo-appropriate validation strategy"
 tools: ["codebase", "search", "editFiles", "terminal"]
 ---
 
-# Testing
+# Purpose
 
-Define and execute the testing strategy for `{{USE_CASE}}` while following the repository's existing test patterns.
+Define and execute a focused testing strategy for `{{USE_CASE}}` that matches the repository's existing test framework and behavior.
 
-## Inputs
+# Inputs
 
-- Requirements: `{{REQUIREMENTS}}`
-- Constraints: `{{CONSTRAINTS}}`
-- Current test framework and repository conventions: inspect before coding
+- `{{REQUIREMENTS}}`
+- `{{TEST_REQUIREMENTS}}`
+- `{{ARCHITECTURE_CONTEXT}}`
+- `{{CONSTRAINTS}}`
 
-## Goal
+# Responsibilities
 
-Verify correctness, edge cases, and regression safety with the smallest effective test set.
+- Inspect the repository's current test framework.
+- Determine the relevant unit, integration, API, UI, and end-to-end tests supported by the project.
+- Test the required behavior without overextending the test suite.
+- Validate edge cases, invalid inputs, and failure conditions.
+- Report actual execution status honestly.
 
-## Test strategy
+# Execution Instructions
 
-- Write tests for the required behavior, not the implementation details.
-- Cover happy paths, invalid input, edge conditions, and failure paths.
-- Include validation checks, status transitions, and repository/service interactions as needed.
-- Prefer repository-consistent test styles and realistic data.
+1. Inspect the repo to identify the current testing framework, conventions, and supported commands.
+2. Determine the minimum tests required for the changed behavior.
+3. Cover key behavior such as:
+   - unit logic
+   - business rules
+   - repository/data behavior
+   - API or handler behavior
+   - UI flows when supported
+   - integration or end-to-end flows only if the repo already supports them
+4. Validate edge cases, invalid input, status transitions, and error handling.
+5. Run the repo-supported validation commands that are actually available.
+6. Report any unavailable tooling instead of claiming success without evidence.
 
-## Checklist
+# Output / Handoff
 
-- Unit tests for business logic or validation
-- Integration tests for API or service boundaries
-- UI tests only if the repo already has a pattern for them
-- Edge cases and empty input handling
-- Error handling and contract validation
+Return a testing summary containing:
 
-## Output format
+- tested behaviors
+- test types used
+- key edge cases covered
+- validation commands run
+- results and failures
+- remaining gaps or risks
 
-```text
-Test plan
-- Scope:
-- Happy paths:
-- Edge cases:
-- Failure cases:
+Pass the test results to final-quality-review and documentation.
 
-Validation steps
-- Commands to run:
-- Expected outcomes:
-```
-
-## Guardrails
+# Rules and Constraints
 
 - Do not test mock-only behavior.
-- Do not add test-only code to production modules.
-- Keep tests focused on real behavior and signal actual risk.
-- Do not broaden the test suite unnecessarily.
+- Do not add test-only code into production modules.
+- Keep tests focused on actual behavior rather than implementation details.
+- Do not claim a test passed unless it was executed and the result is known.
+- Reuse the repo's existing test patterns and tooling before introducing anything new.
+- Keep the test strategy generic and reusable across many use cases.

@@ -1,61 +1,59 @@
 ---
 mode: agent
-description: "Design and implement generic backend/API components"
+description: "Implement backend or API functionality in the repository's current style"
 tools: ["codebase", "search", "editFiles", "terminal"]
 ---
 
-# Backend / API development
+# Purpose
 
-Design and implement the backend or API workflow for `{{USE_CASE}}` in a way that matches the repository's existing conventions.
+Implement the backend or API behavior for `{{USE_CASE}}` using the repository's existing conventions and technology stack.
 
-## Inputs
+# Inputs
 
-- Requirements: `{{REQUIREMENTS}}`
-- Constraints: `{{CONSTRAINTS}}`
-- Existing API or service patterns: inspect before coding
+- `{{REQUIREMENTS}}`
+- `{{ARCHITECTURE_CONTEXT}}`
+- `{{API_REQUIREMENTS}}`
+- `{{CONSTRAINTS}}`
 
-## Goal
+# Responsibilities
 
-Create the smallest backend contract that satisfies the use case while preserving separation of concerns and repository conventions.
+- Inspect the repository's backend patterns and routing conventions.
+- Define the endpoints, handlers, or controller functions required for the use case.
+- Define request and response contracts.
+- Validate inputs and enforce business/service rules.
+- Implement consistent error handling and status behavior.
+- Connect the API layer to existing service or repository patterns.
+- Respect authentication, authorization, and operational conventions already present in the repo.
 
-## Responsibilities
+# Execution Instructions
 
-- Define routes, endpoints, or handlers required by the solution.
-- Keep request/response contracts explicit and consistent.
-- Implement validation and error handling.
-- Separate business logic from transport concerns.
-- Reuse services or domain logic when they already exist.
+1. Inspect the repository to determine the current API style, routing, validation, and error-handling approach.
+2. Define the API responsibilities needed by the use case.
+3. Identify required endpoints or handlers and the operations they support.
+4. Define request payloads, response payloads, and validation rules.
+5. Keep business logic in service or domain layers when the repo already expects that separation.
+6. Keep transport concerns separate from persistence concerns.
+7. Implement consistent handling for success, validation failure, not-found, and conflict cases.
+8. Add or update tests for the API behavior where the repo supports them.
 
-## Checklist
+# Output / Handoff
 
-- Determine what operations are needed: create, read, update, delete, list, submit, approve, validate, search, or status.
-- Define the input payload and output payload for each operation.
-- Describe required and optional fields.
-- Identify validation and error states.
-- Decide whether the repository already provides the correct API style.
-- Keep auth, rate limits, and operational concerns only if the repo already uses them.
+Return an API summary containing:
 
-## Output format
+- endpoints or handlers
+- request/response contract details
+- validation rules
+- error handling behavior
+- service/repository boundaries
+- testing notes
 
-```text
-API summary
-- Endpoints or handlers:
-- Request contracts:
-- Response contracts:
-- Validation rules:
+Pass the API contract and key behavior to testing and documentation.
 
-Error handling
-- Expected errors:
-- Status codes or failure modes:
+# Rules and Constraints
 
-Implementation notes
-- Files or modules to edit:
-- Service/repository boundaries:
-```
-
-## Guardrails
-
-- Do not put persistence logic directly into route handlers unless the repo's pattern already does so.
-- Do not couple the API contract to a specific UI implementation.
-- Do not invent downstream systems or external providers unless they are explicitly specified.
-- Keep the implementation generic and reusable.
+- Do not assume REST, FastAPI, Django, Express, Java, or any other framework.
+- Do not assume a specific protocol or serialization format without checking the repo.
+- Reuse the repository's API, validation, and error conventions.
+- Do not place persistence logic directly in route handlers unless that is already the repo pattern.
+- Do not invent external dependencies, services, or auth systems unless the repo already uses them.
+- Keep the solution generic and adaptable to different backend technologies.

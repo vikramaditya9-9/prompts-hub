@@ -1,60 +1,59 @@
 ---
 mode: agent
-description: "Design and implement repository/data-access patterns"
+description: "Implement repository and persistence behavior in the repo's current style"
 tools: ["codebase", "search", "editFiles", "terminal"]
 ---
 
-# Database / repository development
+# Purpose
 
-Design and implement the persistence and repository layer for `{{USE_CASE}}` using the repository's existing data conventions.
+Implement the repository, persistence, and data-access behavior for `{{USE_CASE}}` using the repository's existing data conventions.
 
-## Inputs
+# Inputs
 
-- Requirements: `{{REQUIREMENTS}}`
-- Constraints: `{{CONSTRAINTS}}`
-- Existing persistence or repository patterns: inspect before coding
+- `{{REQUIREMENTS}}`
+- `{{DATA_MODEL}}`
+- `{{ARCHITECTURE_CONTEXT}}`
+- `{{CONSTRAINTS}}`
 
-## Goal
+# Responsibilities
 
-Provide the cleanest possible data-access contract without overengineering the solution.
+- Inspect the repo's existing persistence approach.
+- Define entities, fields, and relationships needed by the use case.
+- Implement repository or data-access behavior consistent with the project.
+- Handle CRUD or equivalent lifecycle behavior.
+- Support validation, persistence testing, and seed or mock data where appropriate.
+- Keep storage concerns separate from UI, controller, and service logic.
 
-## Responsibilities
+# Execution Instructions
 
-- Define the required entities and their fields.
-- Decide whether a database, in-memory store, file-based store, or abstraction layer is appropriate.
-- Keep repository logic isolated from API and UI logic.
-- Define retrieval, creation, update, deletion, and search boundaries.
+1. Inspect the repository to identify the current persistence approach and repository conventions.
+2. Identify the entities and relationship rules required by the use case.
+3. Determine whether data should be persisted in an existing datastore, in-memory structure, file-based store, or repo-specific abstraction.
+4. Define repository responsibilities and operations needed by the application.
+5. Add or update data validation constraints and persistence-level safeguards.
+6. Decide whether migrations or schema definitions are needed and align with the repo's patterns.
+7. Use mock or seed data only when the repo already uses that pattern and clearly label it as non-production data.
+8. Validate the repository behavior with repository-compatible tests.
 
-## Checklist
+# Output / Handoff
 
-- Identify entities and relationships.
-- Decide which data must persist and which can be transient.
-- Determine repository methods needed for the solution.
-- Define validation constraints at the data layer where appropriate.
-- Document any mock or demo data clearly.
+Return a persistence summary containing:
 
-## Output format
+- entity model
+- relationships
+- repository methods and responsibilities
+- storage decisions
+- validation and CRUD behaviors
+- mock or seed data strategy
+- testing notes
 
-```text
-Persistence summary
-- Entities:
-- Relationships:
-- Storage method:
-- Repository methods:
+Pass this data contract to the backend, testing, and documentation stages.
 
-Data rules
-- Required fields:
-- Validation constraints:
-- Status or lifecycle states:
+# Rules and Constraints
 
-Implementation notes
-- Files or modules to update:
-- Mock data handling:
-```
-
-## Guardrails
-
-- Reuse existing persistence patterns when they already exist.
-- Keep mock data explicitly labeled as non-production data.
-- Do not bypass service-layer boundaries unless the repository pattern clearly requires it.
-- Keep the design domain-independent and reusable.
+- Do not assume SQL, NoSQL, PostgreSQL, MySQL, MongoDB, or any other database technology.
+- Reuse the repository's existing persistence approach before introducing a new storage pattern.
+- Keep mock data clearly labeled and separate from production data.
+- Do not place repository logic directly into UI or request-handling code.
+- Keep the data model general and reusable rather than domain-specific.
+- Do not invent invalid relationship schemas or unsupported persistence behavior.

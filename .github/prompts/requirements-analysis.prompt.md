@@ -1,67 +1,70 @@
 ---
 mode: agent
-description: "Convert a software request into structured, reusable requirements"
+description: "Convert a use case into a reusable requirements specification"
 tools: ["codebase", "search", "editFiles"]
 ---
 
-# Requirements analysis
+# Purpose
 
-Analyze the software request for `{{USE_CASE}}` and convert it into a clear, reusable requirements set.
+Convert the requested work for `{{USE_CASE}}` into a clear, reusable requirements specification that can drive design, implementation, testing, and review.
 
-## Goal
+# Inputs
 
-Capture the problem clearly enough to design and implement the solution without guessing at business facts.
+- `{{USE_CASE}}`
+- `{{BUSINESS_OBJECTIVE}}`
+- `{{USERS}}`
+- `{{REQUIREMENTS}}`
+- `{{CONSTRAINTS}}`
+- `{{BUSINESS_RULES}}`
 
-## Inputs
+# Responsibilities
 
-- Use case: `{{USE_CASE}}`
-- Business objective: `{{BUSINESS_OBJECTIVE}}`
-- Primary users: `{{PRIMARY_USERS}}`
-- Functional requirements: `{{FUNCTIONAL_REQUIREMENTS}}`
-- Non-functional requirements: `{{NON_FUNCTIONAL_REQUIREMENTS}}`
-- Business rules: `{{BUSINESS_RULES}}`
-- Constraints: `{{CONSTRAINTS}}`
+- Identify actors, users, and system participants.
+- Define functional requirements.
+- Define non-functional requirements.
+- Capture workflows, states, and lifecycle events.
+- Identify entities and their relationships.
+- Document business rules and validation logic.
+- Identify edge cases, error conditions, and assumptions.
+- Capture unresolved information and missing requirements.
+- Define acceptance criteria for implementation and validation.
 
-## Required output
+# Execution Instructions
 
-Produce a requirements summary with:
+1. Inspect the repository only to understand the project context and constraints.
+2. Interpret the use case in a domain-independent way.
+3. Separate confirmed information from assumptions and unknowns.
+4. Identify the main users, actors, and stakeholders.
+5. List functional requirements using clear, testable statements.
+6. List non-functional requirements including quality, performance, usability, security, reliability, and operational needs where relevant.
+7. Identify entities, relationships, and state transitions.
+8. Document validation logic and business rules.
+9. Identify edge cases, failure scenarios, and assumptions.
+10. State acceptance criteria in a way that can be validated later.
+11. Capture missing information explicitly rather than inventing it.
 
-- actors and stakeholders
-- user and system inputs
-- expected outputs and user-visible behaviors
-- core entities and their relationships
-- workflows and lifecycle stages
-- business rules and validation rules
-- permissions and access constraints
-- edge cases and error conditions
-- assumptions and unresolved questions
+# Output / Handoff
 
-## Instructions
+Return a requirements summary with:
 
-- Identify what is known, what is inferred, and what is missing.
-- Do not invent critical behavior or domain facts.
-- Separate functional requirements from non-functional requirements.
-- List validation rules clearly, including required vs optional fields and error conditions.
-- Note external dependencies or integrations only when they are relevant to the request.
-- Keep the requirements reusable and generic rather than tied to one vertical domain.
+- actors and users
+- functional requirements
+- non-functional requirements
+- workflows and states
+- entities and relationships
+- business rules
+- validation rules
+- edge cases and failure modes
+- assumptions and missing information
+- acceptance criteria
 
-## Output format
+Pass this specification to the architecture-design stage as a stable requirements baseline.
 
-```text
-Summary
-- Use case:
-- Objective:
-- Users:
-- Constraints:
+# Rules and Constraints
 
-Requirements
-- Functional:
-- Non-functional:
-- Business rules:
-- Validation:
-- Permissions:
-- Edge cases:
-
-Assumptions / gaps
-- 
-```
+- Keep the prompt domain-independent in structure and language.
+- Do not invent business facts or requirements that are not supported by the request or repository.
+- Clearly distinguish confirmed information, assumptions, estimates, and missing information.
+- Use simple, testable language that downstream prompts can implement and validate.
+- Do not prescribe implementation details before requirements are finalized.
+- Keep the requirements reusable across many kinds of software use cases.

@@ -1,60 +1,56 @@
 ---
 mode: agent
-description: "Design and implement a generic frontend/UI workflow"
+description: "Implement UI pages, components, and workflows in the repo's existing UI stack"
 tools: ["codebase", "search", "editFiles", "terminal"]
 ---
 
-# Frontend / UI development
+# Purpose
 
-Design and implement the frontend experience for `{{USE_CASE}}` in a way that matches the repository's existing UI approach.
+Implement the required user interface for `{{USE_CASE}}` using the repository's existing UI framework and component conventions.
 
-## Inputs
+# Inputs
 
-- Requirements: `{{REQUIREMENTS}}`
-- Constraints: `{{CONSTRAINTS}}`
-- Existing UI conventions: inspect before coding
+- `{{REQUIREMENTS}}`
+- `{{UI_REQUIREMENTS}}`
+- `{{ARCHITECTURE_CONTEXT}}`
+- `{{CONSTRAINTS}}`
 
-## Goal
+# Responsibilities
 
-Deliver a user-facing interface that is clear, maintainable, and aligned with the repo's conventions without embedding business logic inside the view layer.
+- Inspect the repo's current UI framework and conventions.
+- Define the required screens, pages, components, and workflows.
+- Reuse existing components and layout patterns before creating new ones.
+- Implement forms, validation, loading states, and error states.
+- Integrate the UI with backend APIs or services in the repo's existing way.
+- Preserve separation between presentation and business logic.
 
-## Responsibilities
+# Execution Instructions
 
-- Define the screens, components, flows, and interactions required by the use case.
-- Keep layout, state, and component responsibilities clear.
-- Connect UI to the appropriate API or service boundaries.
-- Surface validation feedback and error states clearly.
-- Keep display logic separate from domain logic.
+1. Inspect the repository to understand the current UI framework, component structure, and styling conventions.
+2. Identify the minimal screens and interactions required by the use case.
+3. Reuse existing UI components and patterns before creating new ones.
+4. Implement forms, actions, validation, and state handling consistent with repo conventions.
+5. Ensure the UI handles loading, success, and failure states clearly.
+6. Keep business logic out of UI components.
+7. Consider accessibility and usability requirements when they are relevant to the project.
 
-## Checklist
+# Output / Handoff
 
-- Identify screens, views, or pages needed.
-- Identify reusable components and layout patterns.
-- Define input controls, validation messages, and state transitions.
-- Decide whether a local or server-backed data flow is needed.
-- Keep the UI consistent with repository conventions and style.
+Return a UI summary containing:
 
-## Output format
+- screens or pages
+- components and workflows
+- form and validation behavior
+- API or service integration points
+- loading/error/success state handling
+- accessibility considerations
 
-```text
-UI summary
-- Screens / views:
-- Components:
-- User flows:
-- State handling:
+Pass the UI requirements to testing and documentation.
 
-Interaction rules
-- Validation:
-- Error states:
-- Accessibility / usability considerations:
+# Rules and Constraints
 
-Implementation notes
-- Files or modules to update:
-- API contract assumptions:
-```
-
-## Guardrails
-
-- Do not put business rules or persistence code directly into UI components.
-- Do not invent a new UI framework unless the repo already supports one.
-- Keep the experience generic and adaptable to multiple use cases.
+- Do not assume a particular UI framework or library without checking the repo.
+- Do not put business rules, validation logic, or persistence logic directly into UI components if the repo expects separation.
+- Reuse repo conventions for styling, state, and component structure.
+- Keep the experience generic and adaptable to different domains.
+- Do not fabricate fake data or static content that does not match the architecture or repo context.

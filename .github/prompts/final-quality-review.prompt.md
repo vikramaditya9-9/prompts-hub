@@ -1,46 +1,59 @@
 ---
 mode: agent
-description: "Perform final cross-checks for quality, completeness, and consistency"
+description: "Review the final implementation against requirements, quality, and repo standards"
 tools: ["codebase", "search", "editFiles", "terminal"]
 ---
 
-# Final quality review
+# Purpose
 
-Review the entire solution for `{{USE_CASE}}` before sign-off.
+Perform a final quality review for `{{USE_CASE}}` and determine whether the implementation is ready, incomplete, or blocked by risk.
 
-## Inputs
+# Inputs
 
-- Requirements: `{{REQUIREMENTS}}`
-- Design summary: `{{DESIGN_SUMMARY}}`
-- Implementation details: inspect before finalizing
-- Constraints: `{{CONSTRAINTS}}`
+- `{{REQUIREMENTS}}`
+- `{{ARCHITECTURE_CONTEXT}}`
+- `{{CONSTRAINTS}}`
+- all prior implementation outputs
 
-## Review checklist
+# Responsibilities
 
-- Does the implementation match the requirement set?
-- Is the architecture consistent with the repository's existing patterns?
-- Are responsibilities cleanly separated?
-- Did validation and error handling cover meaningful failure modes?
-- Are tests covering the changed behavior?
-- Are docs accurate and aligned with what was implemented?
-- Did the work avoid unnecessary dependencies or broad scope changes?
-- Are assumptions and unresolved gaps clearly noted?
+- Review the implementation against the requirements.
+- Check architecture consistency and separation of concerns.
+- Review API, repository, UI, and testing quality.
+- Inspect error handling, edge cases, and security-relevant assumptions.
+- Run available quality checks and report actual status.
+- Flag remaining risks and unresolved issues.
 
-## Output format
+# Execution Instructions
 
-```text
-Final status
-- Ready / needs follow-up:
-- Remaining risks:
-- Open assumptions:
+1. Review the implementation against the requirements and constraints.
+2. Check whether the architecture remains consistent with the repo's patterns.
+3. Inspect backend, repository, UI, and documentation outputs for alignment and gaps.
+4. Review test coverage and validation results.
+5. Check error handling, validation, edge cases, and assumptions.
+6. Run repo-supported quality checks when available.
+7. Report the outcome clearly as PASS, FAIL, NOT AVAILABLE, or REMAINING RISK.
+8. Provide a final confidence rating and any follow-up recommendations.
 
-Review summary
-- Requirements coverage:
-- Architecture fit:
-- Test confidence:
-- Documentation confidence:
-```
+# Output / Handoff
 
-## Sign-off rule
+Return a final quality report containing:
 
-Only mark the work as complete if the repo context, requirements, implementation, tests, and documentation all align.
+- requirements coverage
+- architecture fit
+- API quality
+- persistence quality
+- UI quality
+- test status
+- documentation status
+- security and error-handling review
+- remaining gaps and risk
+- final PASS / FAIL / NOT AVAILABLE / REMAINING RISK status
+
+# Rules and Constraints
+
+- Do not mark the work complete without available evidence.
+- Clearly distinguish between PASS, FAIL, NOT AVAILABLE, and REMAINING RISK.
+- Report unavailable validation tools honestly.
+- Keep review domain-independent and repo-aware.
+- Flag unresolved assumptions and hidden risk rather than suppressing them.
