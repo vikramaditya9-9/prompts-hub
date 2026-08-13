@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaveboard | Leave Management</title>
+    <link rel="stylesheet" href="/ui/leave.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Leaveboard</div>
+      <span class="badge">Mock data</span>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h1>Leave management</h1>
+        <form id="leave-form" novalidate>
+          <div class="field-grid">
+            <label>Employee ID <input id="employee_id" required></label>
+            <label>Manager ID <input id="manager_id" required></label>
+            <label>Leave type
+              <select id="leave_type" required>
+                <option value="">Select type</option>
+                <option value="annual">Annual</option>
+                <option value="sick">Sick</option>
+                <option value="personal">Personal</option>
+              </select>
+            </label>
+            <label>Start date <input id="start_date" type="date" required></label>
+            <label>End date <input id="end_date" type="date" required></label>
+          </div>
+          <label>Reason <textarea id="reason" required rows="4"></textarea></label>
+          <div id="form-error" class="alert error" hidden></div>
+          <div class="actions">
+            <button type="submit" class="primary">Create request</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Request list</h2>
+        <div id="status-bar" class="status-bar" aria-live="polite"></div>
+        <div id="leave-list" class="leave-list"></div>
+      </section>
+    </main>
+
+    <script src="/ui/leave.js"></script>
+  </body>
+</html>

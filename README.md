@@ -2,6 +2,19 @@
 
 Prompts Hub is a centralized platform for discovering, organizing, sharing, and managing high-quality AI prompts. It helps users find useful prompts for different AI tools and use cases, while making it easy to save, customize, and share prompts with others.
 
+## Leave management MVP
+
+This repository also includes a small leave-management example built using the existing WSGI + in-memory repository pattern. The app demonstrates:
+
+- employee leave request creation and submission
+- status transitions for draft, submitted, approved, rejected, and cancelled
+- manager review and decision actions
+- administrator record viewing
+- deterministic mock manager assignments
+- static browser UI assets served from the local UI folder
+
+This module intentionally avoids a database and leaves leave-balance enforcement out of scope for the MVP.
+
 ✨ Features
 🔍 Discover Prompts — Browse prompts across multiple categories and use cases.
 🗂️ Categories & Tags — Organize prompts for easy navigation and filtering.

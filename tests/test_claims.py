@@ -5,6 +5,8 @@ import unittest
 from prompts_hub.claims import InMemoryClaimRepository, create_app
 
 
+# Existing claim tests remain unchanged.
+
 def request(app, path, method="GET", payload=None):
     body = json.dumps(payload).encode() if payload is not None else b""
     response = {}
@@ -109,6 +111,10 @@ class ClaimApiTests(unittest.TestCase):
         self.assertIn(b"Claimdesk", page)
         self.assertEqual(script_response["status"], "200 OK")
         self.assertIn(b"/api/claims", script)
+
+
+
+
 
 
 if __name__ == "__main__":
